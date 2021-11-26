@@ -3,7 +3,7 @@ import 'package:news_app/app/core/env/env.dart';
 
 class SearchView extends StatelessWidget {
   TextEditingController controller = TextEditingController();
-  final formKey = GlobalKey<FormState>();
+  final formKey = GlobalKey();
 
   SearchView({required this.controller});
   @override
@@ -13,16 +13,23 @@ class SearchView extends StatelessWidget {
       decoration: BoxDecoration(
         color: Env.colors.secondryGrey,
       ),
-      child: TextFormField(
-        key: formKey,
+      child: TextField(
         controller: controller,
+        keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
-          hintText: "Search for news, topics...",
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+          border: const OutlineInputBorder(
+            borderSide: BorderSide(width: 0, color: Colors.transparent),
+            borderRadius: BorderRadius.all(
+              Radius.circular(8.0),
+            ),
           ),
-          suffixIcon:
-              IconButton(icon: const Icon(Icons.search), onPressed: () {}),
+          filled: true,
+          fillColor: Env.colors.secondryGrey,
+          hintText: "Search for news, topics...",
+          suffixIcon: Icon(
+            Icons.search,
+            color: Colors.grey[600],
+          ),
         ),
       ),
     );

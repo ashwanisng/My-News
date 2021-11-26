@@ -5,7 +5,10 @@ import 'package:get/get.dart';
 import 'package:news_app/app/core/env/env.dart';
 
 import 'package:news_app/app/modules/home/controllers/home_controller.dart';
+import 'package:news_app/app/modules/home/views/components/card_view.dart';
 import 'package:news_app/app/modules/home/views/components/search_view.dart';
+import 'package:news_app/app/modules/home/views/components/top_headline_text.dart';
+import 'package:news_app/app/modules/news_view/views/news_view.dart';
 
 class HomeView extends GetView<HomeController> {
   @override
@@ -46,6 +49,20 @@ class HomeView extends GetView<HomeController> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
               child: SearchView(controller: controller.searchController),
+            ),
+          ),
+          const SliverToBoxAdapter(
+            child: TopHeadLinesText(),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: GestureDetector(
+                onTap: () {
+                  Get.to(() => NewsView(), arguments: []);
+                },
+                child: const CardView(),
+              ),
             ),
           ),
         ],
