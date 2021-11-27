@@ -1,11 +1,7 @@
-import 'dart:convert';
-
 import 'package:news_app/app/data/model/articel.dart';
 import 'package:http/http.dart' as http;
 
 class FetchFromApi {
-  // List<News> articles = [];
-
   final url =
       'https://newsapi.org/v2/top-headlines?country=in&apiKey=b9e7b0d3647148fa90b4e0beff0990bf';
 
