@@ -18,75 +18,79 @@ class NewsView extends GetView<NewsViewController> {
           onPressed: () => Get.back(),
         ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const NewsImage(),
-          const SizedBox(height: 10),
-          const Padding(
-            padding: EdgeInsets.only(
-              top: 10,
-              left: 14,
-              right: 14,
-              bottom: 4,
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            NewsImage(
+              url: controller.urlToImage,
             ),
-            child: Text(
-              "Heading",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 24,
+            const SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 10,
+                left: 14,
+                right: 14,
+                bottom: 4,
+              ),
+              child: Text(
+                controller.source!,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: 5),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 14),
-            child: Text(
-              "22 Sep, 2020 at 4:55pm",
-              style: TextStyle(
-                // fontWeight: FontWeight.bold,
-                fontSize: 14,
-                color: Colors.grey,
+            const SizedBox(height: 5),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 14),
+              child: Text(
+                controller.publishedAt.toString(),
+                style: const TextStyle(
+                  // fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                  color: Colors.grey,
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: 20),
-          const Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: 14,
-            ),
-            child: Text(
-              "India vs New Zealand 1st Test, Day 2 Highlights: New Zealand made a strong reply to India’s first innings total of 345 all out, reaching 129 for no loss at stumps on the second day of the opening Test here on Friday. Will Young and Tom Latham were batting on 75 and 50 respectively at close of play on Day 2. New Zealand still trail the hosts by 216 runs. India started the day on 258 for four.",
-              style: TextStyle(
-                fontSize: 18,
+            const SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 14,
+              ),
+              child: Text(
+                controller.description!,
+                style: const TextStyle(
+                  fontSize: 18,
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: 20),
-          GestureDetector(
-            onTap: () {},
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-              child: Row(
-                children: [
-                  Text(
-                    "See full story",
-                    style: TextStyle(
-                      color: Env.colors.primaryBlue,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 18,
+            const SizedBox(height: 20),
+            GestureDetector(
+              onTap: () {},
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                child: Row(
+                  children: [
+                    Text(
+                      "See full story",
+                      style: TextStyle(
+                        color: Env.colors.primaryBlue,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                      ),
                     ),
-                  ),
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    color: Env.colors.primaryBlue,
-                    size: 18,
-                  ),
-                ],
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      color: Env.colors.primaryBlue,
+                      size: 18,
+                    ),
+                  ],
+                ),
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

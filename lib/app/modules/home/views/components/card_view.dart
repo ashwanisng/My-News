@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:news_app/app/core/env/env.dart';
 
 class CardView extends StatelessWidget {
-  const CardView({
-    Key? key,
-  }) : super(key: key);
+  String? newsSource;
+  String? image;
+  String? title;
 
+  CardView({
+    required this.newsSource,
+    required this.image,
+    required this.title,
+  });
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -21,18 +26,18 @@ class CardView extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: const [
+                  children: [
                     Flexible(
                       child: Text(
-                        "Main Headline",
-                        style: TextStyle(
+                        newsSource!,
+                        style: const TextStyle(
                             fontWeight: FontWeight.w700, fontSize: 18),
                       ),
                     ),
                     // SizedBox(height: 8),
                     Flexible(
                       child: Text(
-                        "India vs New Zealand 1st Test, Day 2 Highlights: New Zealand made a strong reply to India’s first innings total of 345 all out, reaching 129 for no loss at stumps on the second day of the opening Test here on Friday. Will Young and Tom Latham were batting on 75 and 50 respectively at close of play on Day 2. New Zealand still trail the hosts by 216 runs. India started the day on 258 for four.",
+                        title!,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 5,
                         softWrap: false,
@@ -50,13 +55,11 @@ class CardView extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                     color: Env.colors.primaryBlue,
                   ),
-                  child: Expanded(
-                    child: Image.asset(
-                      "assets/images/news.jpg",
-                      fit: BoxFit.cover,
-                      // height: 100,
-                      // width: 100,
-                    ),
+                  child: Image.network(
+                    image!,
+                    fit: BoxFit.cover,
+                    // height: 100,
+                    // width: 100,
                   ),
                 ),
               )

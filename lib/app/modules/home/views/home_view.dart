@@ -24,6 +24,7 @@ class HomeView extends GetView<HomeController> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   const Text("LOCATION", style: TextStyle(fontSize: 12)),
                   Padding(
@@ -54,14 +55,30 @@ class HomeView extends GetView<HomeController> {
           const SliverToBoxAdapter(
             child: TopHeadLinesText(),
           ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              child: GestureDetector(
-                onTap: () {
-                  Get.to(() => NewsView(), arguments: []);
+          Obx(
+            () => SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (context, index) {
+                  var data = controller.newsList[index];
+                  return GestureDetector(
+                    onTap: () {
+                      Get.to(() => NewsView(), arguments: {
+                        'title': data.title,
+                        'description': data.description,
+                        'urlToImage': data.urlToImage,
+                        'newsSource': data.source!.name,
+                        'publishedAt': data.publishedAt,
+                      });
+                    },
+                    child: CardView(
+                      newsSource: data.source!.name,
+                      image: data.urlToImage ??
+                          "https://cdn.pixabay.com/photo/2013/07/12/19/16/newspaper-154444_960_720.png",
+                      title: data.title,
+                    ),
+                  );
                 },
-                child: const CardView(),
+                childCount: controller.newsList.length,
               ),
             ),
           ),
@@ -77,3 +94,6 @@ class HomeView extends GetView<HomeController> {
     );
   }
 }
+/**
+ * 
+ */

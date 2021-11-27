@@ -5,9 +5,23 @@ import 'package:get/get.dart';
 class NewsViewController extends GetxController {
   //TODO: Implement NewsViewController
 
+  String? title;
+  String? description;
+  String? urlToImage;
+  String? source;
+  DateTime? publishedAt;
+
   @override
   void onInit() {
     super.onInit();
+
+    var data = Get.arguments;
+
+    title = data["title"];
+    description = data["description"];
+    urlToImage = data["urlToImage"];
+    source = data["newsSource"];
+    publishedAt = data["publishedAt"];
   }
 
   @override
