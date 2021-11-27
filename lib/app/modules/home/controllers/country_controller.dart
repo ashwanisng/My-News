@@ -1,42 +1,28 @@
-// ignore_for_file: unnecessary_overrides
-
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:news_app/app/data/model/articel.dart';
 import 'package:news_app/app/data/service/api.dart';
+import 'package:news_app/app/modules/home/controllers/home_controller.dart';
 
-class HomeController extends GetxController {
+class CountryController extends GetxController {
   //TODO: Implement HomeController
 
-  TextEditingController searchController = TextEditingController();
   var newsList = <Article>[].obs;
 
+  HomeController homeController = Get.find<HomeController>();
+
   var isChecked = false.obs;
+
+  late String countryCode;
 
   @override
   void onInit() {
     super.onInit();
 
-    fetchNews();
+    selectedCountryNews();
   }
 
-  void fetchNews() async {
-    try {
-      FetchFromApi fetchFromApi = FetchFromApi();
-      var data = await fetchFromApi.getNews();
-
-      for (var i = 0; i < data!.articles.length; i++) {
-        if (data.articles[i].urlToImage != null &&
-            data.articles[i].source!.name!.isNotEmpty) {
-          newsList.addAll(data.articles);
-        }
-      }
-    } catch (e) {
-      print(e);
-    }
-  }
-
-  void selectedCountryNews(String countryCode) async {
+  void selectedCountryNews() async {
     try {
       FetchFromApi fetchFromApi = FetchFromApi();
       var data = await fetchFromApi.fetchCountryNews(countryCode);
@@ -44,7 +30,7 @@ class HomeController extends GetxController {
       for (var i = 0; i < data!.articles.length; i++) {
         if (data.articles[i].urlToImage != null &&
             data.articles[i].source!.name!.isNotEmpty) {
-          newsList.addAll(data.articles);
+          homeController.newsList.addAll(data.articles);
         }
       }
     } catch (e) {

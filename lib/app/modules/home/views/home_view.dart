@@ -6,7 +6,9 @@ import 'package:news_app/app/core/env/env.dart';
 
 import 'package:news_app/app/modules/home/controllers/home_controller.dart';
 import 'package:news_app/app/modules/home/views/components/card_view.dart';
+import 'package:news_app/app/modules/home/views/components/news_source_bottom_sheet.dart';
 import 'package:news_app/app/modules/home/views/components/search_view.dart';
+import 'package:news_app/app/modules/home/views/components/country_bottom_sheet.dart';
 import 'package:news_app/app/modules/home/views/components/top_headline_text.dart';
 import 'package:news_app/app/modules/news_view/views/news_view.dart';
 
@@ -30,14 +32,21 @@ class HomeView extends GetView<HomeController> {
                   Padding(
                     padding: const EdgeInsets.only(right: 12),
                     child: Row(
-                      children: const [
-                        Icon(
+                      children: [
+                        const Icon(
                           Icons.location_on,
                           size: 14,
                         ),
-                        SizedBox(width: 2),
-                        Text(
-                          "India",
+                        const SizedBox(width: 2),
+                        GestureDetector(
+                          onTap: () {
+                            Get.bottomSheet(
+                              CountryBottomSheet(),
+                            );
+                          },
+                          child: const Text(
+                            "India",
+                          ),
                         )
                       ],
                     ),
@@ -87,13 +96,10 @@ class HomeView extends GetView<HomeController> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Env.colors.primaryBlue,
         onPressed: () {
-          Get.toNamed('/second');
+          Get.bottomSheet(NewsSourceBottomSheet());
         },
         child: const Icon(Icons.filter_list_alt, color: Colors.white),
       ),
     );
   }
 }
-/**
- * 
- */

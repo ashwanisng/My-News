@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
+import 'package:news_app/app/modules/home/controllers/country_controller.dart';
 
 import 'package:news_app/app/modules/home/controllers/home_controller.dart';
+import 'package:news_app/app/modules/home/controllers/newssource_controller.dart';
 import 'package:news_app/app/modules/news_view/controllers/news_view_controller.dart';
 
 class HomeBinding extends Bindings {
@@ -11,6 +13,14 @@ class HomeBinding extends Bindings {
     );
     Get.lazyPut<NewsViewController>(
       () => NewsViewController(),
+      fenix: true,
+    );
+    Get.lazyPut<CountryController>(
+      () => CountryController(),
+      fenix: true,
+    );
+    Get.lazyPut<NewsSourceController>(
+      () => NewsSourceController(),
       fenix: true,
     );
   }
