@@ -1,3 +1,4 @@
+import 'package:country_list_pick/country_list_pick.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -24,31 +25,40 @@ class HomeView extends GetView<HomeController> {
             backgroundColor: Env.colors.primaryBlue,
             actions: [
               Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
+                // mainAxisAlignment: MainAxisAlignment.center,
+                // crossAxisAlignment: CrossAxisAlignment.center,
+                // mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Text("LOCATION", style: TextStyle(fontSize: 12)),
+                  const Expanded(
+                      child: Text("LOCATION", style: TextStyle(fontSize: 12))),
                   Padding(
                     padding: const EdgeInsets.only(right: 12),
-                    child: Row(
-                      children: [
-                        const Icon(
-                          Icons.location_on,
-                          size: 14,
-                        ),
-                        const SizedBox(width: 2),
-                        GestureDetector(
-                          onTap: () {
-                            Get.bottomSheet(
-                              CountryBottomSheet(),
-                            );
-                          },
-                          child: const Text(
-                            "India",
+                    child: Expanded(
+                      child: Row(
+                        children: [
+                          const Icon(
+                            Icons.location_on,
+                            size: 14,
                           ),
-                        )
-                      ],
+                          const SizedBox(width: 2),
+                          SizedBox(
+                            child: CountryListPick(
+                              theme: CountryTheme(
+                                  isShowFlag: false,
+                                  isShowTitle: true,
+                                  isDownIcon: true,
+                                  showEnglishName: true,
+                                  isShowCode: false),
+                              onChanged: (CountryCode? code) {
+                                controller.countryController.countryCode =
+                                    code!.code.toString();
+                              },
+                              useUiOverlay: true,
+                              useSafeArea: false,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   )
                 ],

@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:news_app/app/data/model/articel.dart';
 import 'package:news_app/app/data/service/api.dart';
+import 'package:news_app/app/modules/home/controllers/country_controller.dart';
 
 class HomeController extends GetxController {
   //TODO: Implement HomeController
@@ -12,6 +13,8 @@ class HomeController extends GetxController {
   var newsList = <Article>[].obs;
 
   var isChecked = false.obs;
+
+  CountryController countryController = Get.find<CountryController>();
 
   @override
   void onInit() {
@@ -22,13 +25,15 @@ class HomeController extends GetxController {
 
   void fetchNews() async {
     try {
+      newsList.clear();
+
       FetchFromApi fetchFromApi = FetchFromApi();
       var data = await fetchFromApi.getNews();
 
       for (var i = 0; i < data!.articles.length; i++) {
         if (data.articles[i].urlToImage != null &&
             data.articles[i].source!.name!.isNotEmpty) {
-          newsList.addAll(data.articles);
+          newsList.add(data.articles[i]);
         }
       }
     } catch (e) {

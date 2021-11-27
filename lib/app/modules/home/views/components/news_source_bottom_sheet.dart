@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:news_app/app/core/env/env.dart';
@@ -46,24 +48,20 @@ class NewsSourceBottomSheet extends GetView<NewsSourceController> {
                       itemCount: newsSourceName.newsSources.length,
                       itemBuilder: (context, index) {
                         var data = newsSourceName.newsSources[index];
-                        return Obx(
-                          () => ListTile(
-                            title: Text(
-                              data['name'].toString(),
-                              style: const TextStyle(
-                                fontSize: 18,
-                              ),
+                        return ListTile(
+                          title: Text(
+                            data['name'].toString(),
+                            style: const TextStyle(
+                              fontSize: 18,
                             ),
-                            trailing: IconButton(
+                          ),
+                          trailing: Obx(
+                            () => IconButton(
                               onPressed: () {
-                                controller.isChecked.value == true
-                                    ? controller.isChecked.value = false
-                                    : controller.isChecked.value = true;
-
-                                // controller.countryCode =
-                                //     data['code'].toString();
+                                controller.isChecked[index] =
+                                    !controller.isChecked[index];
                               },
-                              icon: controller.isChecked.value == true
+                              icon: controller.isChecked[index]
                                   ? Icon(
                                       Icons.check_box,
                                       color: Env.colors.primaryIndigo,
@@ -89,8 +87,7 @@ class NewsSourceBottomSheet extends GetView<NewsSourceController> {
                   MaterialButton(
                     color: Env.colors.primaryBlue,
                     onPressed: () {
-                      // controller.selectedCountryNews(data['code'].toString());
-                      // controller.selectedCountryNews();
+                      controller.selectedCountryNews();
                       Get.back();
                     },
                     child: const Text(
@@ -107,3 +104,34 @@ class NewsSourceBottomSheet extends GetView<NewsSourceController> {
     );
   }
 }
+/***
+ * ListTile(
+                            title: Text(
+                              data['name'].toString(),
+                              style: const TextStyle(
+                                fontSize: 18,
+                              ),
+                            ),
+                            trailing: Obx(
+                              () => IconButton(
+                                onPressed: () {
+                                  value.isChecked.value == true
+                                      ? value.isChecked.value = false
+                                      : value.isChecked.value = true;
+
+                                  // controller.countryCode =
+                                  //     data['code'].toString();
+                                },
+                                icon: value.isChecked.value == true
+                                    ? Icon(
+                                        Icons.check_box,
+                                        color: Env.colors.primaryIndigo,
+                                      )
+                                    : Icon(
+                                        Icons.check_box_outline_blank,
+                                        color: Env.colors.primaryIndigo,
+                                      ),
+                              ),
+                            ),
+                          ),
+ */

@@ -6,7 +6,7 @@ class CountryName {
     {"name": "Åland Islands", "code": "AX"},
     {"name": "Albania", "code": "AL"},
     {"name": "Algeria", "code": "DZ"},
-    {"name": "American Samoa", "code": "AS"},
+    {"name": "American Sa moa", "code": "AS"},
     {"name": "AndorrA", "code": "AD"},
     {"name": "Angola", "code": "AO"},
     {"name": "Anguilla", "code": "AI"},

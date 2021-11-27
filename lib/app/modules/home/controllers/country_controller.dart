@@ -1,13 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:news_app/app/data/model/articel.dart';
 import 'package:news_app/app/data/service/api.dart';
 import 'package:news_app/app/modules/home/controllers/home_controller.dart';
 
 class CountryController extends GetxController {
   //TODO: Implement HomeController
-
-  var newsList = <Article>[].obs;
 
   HomeController homeController = Get.find<HomeController>();
 
@@ -24,13 +20,15 @@ class CountryController extends GetxController {
 
   void selectedCountryNews() async {
     try {
+      homeController.newsList.clear();
+
       FetchFromApi fetchFromApi = FetchFromApi();
       var data = await fetchFromApi.fetchCountryNews(countryCode);
 
       for (var i = 0; i < data!.articles.length; i++) {
         if (data.articles[i].urlToImage != null &&
             data.articles[i].source!.name!.isNotEmpty) {
-          homeController.newsList.addAll(data.articles);
+          homeController.newsList.add(data.articles[i]);
         }
       }
     } catch (e) {

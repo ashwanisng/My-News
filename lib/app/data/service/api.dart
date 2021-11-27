@@ -24,4 +24,15 @@ class FetchFromApi {
       return newsFromJson(jsonString);
     }
   }
+
+  fetchFromSelectedNewsSource(String newsSourceId) async {
+    var _url =
+        "https://newsapi.org/v2/top-headlines?sources=$newsSourceId&apiKey=b9e7b0d3647148fa90b4e0beff0990bf";
+    var response = await http.get(Uri.parse(_url));
+
+    if (response.statusCode == 200) {
+      var jsonString = response.body;
+      return newsFromJson(jsonString);
+    }
+  }
 }
