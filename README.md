@@ -10,7 +10,7 @@
 
 My News will keep you updated with the latest news.
 
-<p align="center"><img src="screenshots/news.png" width=35%></p>
+<p align="center"><img src="assets/images/playstore.png" width=35%></p>
 
 <br/>
 
