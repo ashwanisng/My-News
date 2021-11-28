@@ -18,3 +18,9 @@ The [News API](https://newsapi.org/) was used to fetch the latest news. <br>
 <br>
 
 <br> Please star⭐ the repo if you like what you see😉.
+
+## 💻 Requirements
+
+- Any Operating System (ie. MacOS X, Linux, Windows)
+- Any IDE with Flutter SDK installed (ie. IntelliJ, Android Studio, VSCode etc)
+- A little knowledge of Dart and Flutter
