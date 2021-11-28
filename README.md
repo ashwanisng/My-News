@@ -37,3 +37,18 @@ The [News API](https://newsapi.org/) was used to fetch the latest news. <br>
 - [x] User friendly UI.
 - [x] Dark Mode.
 - [x] Clean Architecture.   
+
+
+## 📸 ScreenShots
+
+<!-- <img src="ss/mockup.png"/> -->
+
+| Light                             | Dark                              |
+| --------------------------------- | --------------------------------- |
+| <img src="screenshot/ss1.jpg" width="200" height="400">  | <img src="screenshot/ss5.jpg" width="200" height="400">  |
+| <img src="screenshot/ss2.jpg" width="200" height="400">  | <img src="screenshot/ss4.jpg" width="200" height="400">  |
+| <img src="screenshot/ss3.jpg" width="200" height="400">  | <img src="screenshot/ss6.jpg" width="200" height="400">  |
+| <img src="screenshot/ss7.jpg" width="200" height="400">  
+<!-- | <img src="screenshot/l4.jpg" width="200" height="400">  | <img src="screenshot/d4.jpg" width="200" height="400">  |
+| <img src="screenshot/l5.jpg" width="200" height="400">  | <img src="screenshot/5.jpg" width="200" height="400">  | -->
+
