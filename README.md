@@ -1,16 +1,39 @@
-# news_app
+# MyNews
 
-A new Flutter project.
+![Issues](https://img.shields.io/github/issues/ashwanisng/My-News)
+![Pull Requests](https://img.shields.io/github/issues-pr/ashwanisng/My-News)
+![Forks](https://img.shields.io/github/forks/ashwanisng/My-News)
+![Stars](https://img.shields.io/github/stars/ashwanisng/My-News)
+![License](https://img.shields.io/github/license/ashwanisng/My-News)
 
-## Getting Started
+[![Twitter Follow](https://img.shields.io/twitter/follow/ashwanisng.svg?style=social)](https://twitter.com/ashwanisng)
 
-This project is a starting point for a Flutter application.
+My News will keep you updated with the latest news.
 
-A few resources to get you started if this is your first Flutter project:
+<p align="center"><img src="assets/images/playstore.png" width=35%></p>
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+<br/>
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+The [News API](https://newsapi.org/) was used to fetch the latest news. <br>
+<br>
+
+<br> Please star⭐ the repo if you like what you see😉.
+
+## 💻 Requirements
+
+- Any Operating System (ie. MacOS X, Linux, Windows)
+- Any IDE with Flutter SDK installed (ie. IntelliJ, Android Studio, VSCode etc)
+- A little knowledge of Dart and Flutter
+
+
+## ✨ Features
+
+- [x] See all latest news.
+- [x] Filter news according to news source ex- google news, bbc, cnn etc.
+- [x] Show top headlines according to users location. 
+- [x] Search any keywords or news.
+- [x] Internet Connect error handling.
+- [x] Pull to refresh feature.  
+- [x] User friendly UI.
+- [x] Dark Mode.
+- [x] Clean Architecture.   
