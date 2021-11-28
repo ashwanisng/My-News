@@ -2,6 +2,8 @@
 //
 //     final news = newsFromJson(jsonString);
 
+// ignore_for_file: prefer_if_null_operators
+
 import 'dart:convert';
 
 News newsFromJson(String str) => News.fromJson(json.decode(str));

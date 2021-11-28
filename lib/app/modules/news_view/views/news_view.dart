@@ -126,10 +126,12 @@ class NewsView extends GetView<NewsViewController> {
               padding: const EdgeInsets.symmetric(
                 horizontal: 14,
               ),
-              child: Text(
-                controller.content!,
-                style: const TextStyle(
-                  fontSize: 18,
+              child: Flexible(
+                child: RichText(
+                  text: TextSpan(
+                    text: controller.description!,
+                    style: Theme.of(context).textTheme.bodyText1,
+                  ),
                 ),
               ),
             ),

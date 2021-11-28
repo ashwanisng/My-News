@@ -45,7 +45,7 @@ class CardView extends StatelessWidget {
                         style: Theme.of(context).textTheme.bodyText1,
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       child: Text(
                         dateTime.toString(),
                         style: Theme.of(context).textTheme.caption,

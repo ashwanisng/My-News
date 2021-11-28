@@ -36,7 +36,7 @@ class SearchView extends StatelessWidget {
           hintText: "Search for news, topics...",
           suffixIcon: IconButton(
             onPressed: onPressed,
-            icon: Icon(Icons.search),
+            icon: const Icon(Icons.search),
           ),
         ),
       ),

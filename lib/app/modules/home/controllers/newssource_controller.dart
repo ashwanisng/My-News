@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:news_app/app/data/model/articel.dart';
+import 'package:news_app/app/data/model/news_model.dart';
 import 'package:news_app/app/data/service/api.dart';
 import 'package:news_app/app/modules/home/controllers/home_controller.dart';
 import 'package:news_app/app/utils/new_source_name.dart';
@@ -20,7 +20,9 @@ class NewsSourceController extends GetxController {
     false,
   ].obs;
 
-  void selectedNewsSourceNews() async {
+  //  Show all selected news sources only
+
+  Future<void> selectedNewsSourceNews() async {
     try {
       homeController.newsList.clear();
 

@@ -5,7 +5,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 import 'package:news_app/app/core/env/env.dart';
 
 import 'package:news_app/app/modules/home/controllers/home_controller.dart';
@@ -15,7 +14,7 @@ import 'package:news_app/app/modules/home/views/components/search_view.dart';
 import 'package:news_app/app/modules/home/views/components/top_headline_text.dart';
 import 'package:news_app/app/modules/news_view/views/news_view.dart';
 import 'package:news_app/app/utils/error_page.dart';
-import 'package:news_app/app/utils/no_internet.dart';
+import 'package:news_app/app/utils/no_internet_page.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class HomeView extends GetView<HomeController> {
@@ -39,45 +38,34 @@ class HomeView extends GetView<HomeController> {
                               title: const Text("MyNews"),
                               backgroundColor: Env.colors.primaryBlue,
                               actions: [
-                                Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    const Expanded(
-                                        child: Text("LOCATION",
-                                            style: TextStyle(fontSize: 12))),
-                                    Padding(
-                                      padding: const EdgeInsets.only(right: 12),
-                                      child: Expanded(
-                                        child: Row(
-                                          children: [
-                                            const Icon(
-                                              Icons.location_on,
-                                              size: 14,
-                                            ),
-                                            const SizedBox(width: 2),
-                                            SizedBox(
-                                              child: CountryListPick(
-                                                theme: CountryTheme(
-                                                  isShowFlag: true,
-                                                  isShowTitle: false,
-                                                  isDownIcon: true,
-                                                  showEnglishName: true,
-                                                  isShowCode: false,
-                                                ),
-                                                onChanged: (CountryCode? code) {
-                                                  controller
-                                                      .selectedCountryNews(
-                                                          code!.code!);
-                                                },
-                                                useUiOverlay: true,
-                                                useSafeArea: false,
-                                              ),
-                                            )
-                                          ],
-                                        ),
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 12),
+                                  child: Row(
+                                    children: [
+                                      const Icon(
+                                        Icons.location_on,
+                                        size: 14,
                                       ),
-                                    ),
-                                  ],
+                                      const SizedBox(width: 2),
+                                      SizedBox(
+                                        child: CountryListPick(
+                                          theme: CountryTheme(
+                                            isShowFlag: false,
+                                            isShowTitle: true,
+                                            isDownIcon: true,
+                                            showEnglishName: true,
+                                            isShowCode: false,
+                                          ),
+                                          onChanged: (CountryCode? code) {
+                                            controller.selectedCountryNews(
+                                                code!.code!);
+                                          },
+                                          useUiOverlay: true,
+                                          useSafeArea: false,
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 )
                               ],
                             ),
@@ -131,7 +119,7 @@ class HomeView extends GetView<HomeController> {
                           ],
                         ),
                       )
-            : const NoInternet(),
+            : const NoInternetPage(),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Env.colors.primaryBlue,

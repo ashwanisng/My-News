@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/app/core/env/env.dart';
 
-class NoInternet extends StatelessWidget {
-  const NoInternet({Key? key}) : super(key: key);
+class NoInternetPage extends StatelessWidget {
+  const NoInternetPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

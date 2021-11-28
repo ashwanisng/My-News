@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:news_app/app/core/env/env.dart';
 import 'package:news_app/app/modules/home/controllers/category_controller.dart';
-import 'package:news_app/app/modules/home/controllers/home_controller.dart';
 
 class TopHeadLinesText extends GetView<CategoryController> {
   @override
@@ -20,7 +19,6 @@ class TopHeadLinesText extends GetView<CategoryController> {
             ),
           ),
           Row(
-            // mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               const Text("Sort: "),
               Obx(
@@ -33,7 +31,7 @@ class TopHeadLinesText extends GetView<CategoryController> {
                     Icons.arrow_drop_down,
                     color: Env.colors.primaryIndigo,
                   ),
-                  items: <String>["Popular", "Newest", "Oldest"]
+                  items: <String>["popularity", "Newest", "Oldest"]
                       .map((String value) {
                     return DropdownMenuItem<String>(
                       value: value,

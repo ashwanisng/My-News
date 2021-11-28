@@ -19,7 +19,7 @@ class NewsSourceBottomSheet extends GetView<NewsSourceController> {
           // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Choose your location",
                 style: Theme.of(context).textTheme.bodyText2,
@@ -100,34 +100,3 @@ class NewsSourceBottomSheet extends GetView<NewsSourceController> {
     );
   }
 }
-/***
- * ListTile(
-                            title: Text(
-                              data['name'].toString(),
-                              style: const TextStyle(
-                                fontSize: 18,
-                              ),
-                            ),
-                            trailing: Obx(
-                              () => IconButton(
-                                onPressed: () {
-                                  value.isChecked.value == true
-                                      ? value.isChecked.value = false
-                                      : value.isChecked.value = true;
-
-                                  // controller.countryCode =
-                                  //     data['code'].toString();
-                                },
-                                icon: value.isChecked.value == true
-                                    ? Icon(
-                                        Icons.check_box,
-                                        color: Env.colors.primaryIndigo,
-                                      )
-                                    : Icon(
-                                        Icons.check_box_outline_blank,
-                                        color: Env.colors.primaryIndigo,
-                                      ),
-                              ),
-                            ),
-                          ),
- */

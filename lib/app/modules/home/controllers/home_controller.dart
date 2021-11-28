@@ -5,7 +5,7 @@ import 'dart:async';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:news_app/app/data/model/articel.dart';
+import 'package:news_app/app/data/model/news_model.dart';
 import 'package:news_app/app/data/service/api.dart';
 
 class HomeController extends GetxController {
@@ -26,11 +26,12 @@ class HomeController extends GetxController {
   void onInit() {
     super.onInit();
     fetchNews();
-    // searchNews();
     getConnectionType();
     subscription =
         connectivity.onConnectivityChanged.listen(getConnectionStatus);
   }
+
+  // Connection Type
 
   Future<void> getConnectionType() async {
     var connectivityResult;
@@ -41,6 +42,8 @@ class HomeController extends GetxController {
     }
     return getConnectionStatus(connectivityResult);
   }
+
+  // Connection Status
 
   getConnectionStatus(ConnectivityResult connectivityResult) async {
     var connectivityResult = await connectivity.checkConnectivity();
@@ -53,7 +56,9 @@ class HomeController extends GetxController {
     }
   }
 
-  void selectedCountryNews(String code) async {
+  // Show selected country news only
+
+  Future<void> selectedCountryNews(String code) async {
     try {
       newsList.clear();
       isLoading(true);
@@ -71,7 +76,9 @@ class HomeController extends GetxController {
     }
   }
 
-  fetchNews() async {
+  // Fetch all latest News
+
+  Future<void> fetchNews() async {
     try {
       newsList.clear();
 
@@ -91,7 +98,9 @@ class HomeController extends GetxController {
     }
   }
 
-  void searchNews() async {
+  // Show all search result
+
+  Future<void> searchNews() async {
     try {
       newsList.clear();
       isLoading(true);
@@ -102,7 +111,7 @@ class HomeController extends GetxController {
       var data = await fetchFromApi.searchNews(searchController.text);
 
       if (data != null) {
-        for (var i = 0; i < data!.articles.length; i++) {
+        for (var i = 0; i < data.articles.length; i++) {
           if (data.articles[i].urlToImage != null &&
               data.articles[i].source!.name!.isNotEmpty) {
             newsList.add(data.articles[i]);
