@@ -17,6 +17,7 @@ void main() {
       darkTheme: YourTheme.darkTheme,
       themeMode: ThemeService().getThemeMode(),
       initialBinding: GlobalBinding(),
+      debugShowCheckedModeBanner: false,
     ),
   );
 }

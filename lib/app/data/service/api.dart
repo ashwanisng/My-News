@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 
 class FetchFromApi {
   final url =
-      'https://newsapi.org/v2/top-headlines?country=in&apiKey=d8e1938600e940e69b3ad0f789670232';
+      'https://newsapi.org/v2/top-headlines?country=in&apiKey=f7d11e73bdde425e86006f9d7b7dada4';
 
   // Fetch All latest News
 
@@ -22,7 +22,7 @@ class FetchFromApi {
 
   Future<News?> fetchCountryNews(String country) async {
     var _url =
-        "https://newsapi.org/v2/top-headlines?country=$country&apiKey=d8e1938600e940e69b3ad0f789670232";
+        "https://newsapi.org/v2/top-headlines?country=$country&apiKey=f7d11e73bdde425e86006f9d7b7dada4";
     var response = await http.get(Uri.parse(_url));
 
     if (response.statusCode == 200) {
@@ -37,7 +37,7 @@ class FetchFromApi {
 
   Future<News?> fetchFromSelectedNewsSource(String newsSourceId) async {
     var _url =
-        "https://newsapi.org/v2/top-headlines?sources=$newsSourceId&apiKey=d8e1938600e940e69b3ad0f789670232";
+        "https://newsapi.org/v2/top-headlines?sources=$newsSourceId&apiKey=f7d11e73bdde425e86006f9d7b7dada4";
     var response = await http.get(Uri.parse(_url));
 
     if (response.statusCode == 200) {
@@ -52,7 +52,7 @@ class FetchFromApi {
 
   Future<News?> searchNews(String searchQuery) async {
     var _url =
-        "https://newsapi.org/v2/everything?q=$searchQuery&apiKey=d8e1938600e940e69b3ad0f789670232";
+        "https://newsapi.org/v2/everything?q=$searchQuery&apiKey=f7d11e73bdde425e86006f9d7b7dada4";
     var response = await http.get(Uri.parse(_url));
 
     if (response.statusCode == 200) {
@@ -67,7 +67,7 @@ class FetchFromApi {
 
   Future<News?> categoryWiseNews(String? category) async {
     var _url =
-        "https://newsapi.org/v2/top-headlines/sources?category=$category&apiKey=d8e1938600e940e69b3ad0f789670232";
+        "https://newsapi.org/v2/top-headlines/sources?category=$category&apiKey=f7d11e73bdde425e86006f9d7b7dada4";
 
     var response = await http.get(Uri.parse(_url));
 
