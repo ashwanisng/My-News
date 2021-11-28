@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 
 class FetchFromApi {
   final url =
-      'https://newsapi.org/v2/top-headlines?country=in&apiKey=b9e7b0d3647148fa90b4e0beff0990bf';
+      'https://newsapi.org/v2/top-headlines?country=in&apiKey=f9fd98aa780c41298b2c77f27e2e718c';
 
   Future<News?> getNews() async {
     var response = await http.get(Uri.parse(url));
@@ -11,12 +11,14 @@ class FetchFromApi {
     if (response.statusCode == 200) {
       var jsonString = response.body;
       return newsFromJson(jsonString);
+    } else {
+      throw Exception('Failed to load news');
     }
   }
 
   fetchCountryNews(String country) async {
     var _url =
-        "https://newsapi.org/v2/top-headlines?country=$country&apiKey=b9e7b0d3647148fa90b4e0beff0990bf";
+        "https://newsapi.org/v2/top-headlines?country=$country&apiKey=f9fd98aa780c41298b2c77f27e2e718c";
     var response = await http.get(Uri.parse(_url));
 
     if (response.statusCode == 200) {
@@ -27,7 +29,7 @@ class FetchFromApi {
 
   fetchFromSelectedNewsSource(String newsSourceId) async {
     var _url =
-        "https://newsapi.org/v2/top-headlines?sources=$newsSourceId&apiKey=b9e7b0d3647148fa90b4e0beff0990bf";
+        "https://newsapi.org/v2/top-headlines?sources=$newsSourceId&apiKey=f9fd98aa780c41298b2c77f27e2e718c";
     var response = await http.get(Uri.parse(_url));
 
     if (response.statusCode == 200) {
@@ -38,7 +40,7 @@ class FetchFromApi {
 
   searchNews(String searchQuery) async {
     var _url =
-        "https://newsapi.org/v2/everything?q=$searchQuery&apiKey=b9e7b0d3647148fa90b4e0beff0990bf";
+        "https://newsapi.org/v2/everything?q=$searchQuery&apiKey=f9fd98aa780c41298b2c77f27e2e718c";
     var response = await http.get(Uri.parse(_url));
 
     if (response.statusCode == 200) {

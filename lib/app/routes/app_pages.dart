@@ -4,6 +4,7 @@ import 'package:news_app/app/modules/home/bindings/home_binding.dart';
 import 'package:news_app/app/modules/home/views/home_view.dart';
 import 'package:news_app/app/modules/news_view/bindings/news_view_binding.dart';
 import 'package:news_app/app/modules/news_view/views/news_view.dart';
+import 'package:news_app/app/modules/newsweb/views/newsweb_view.dart';
 
 part 'app_routes.dart';
 
@@ -20,6 +21,11 @@ class AppPages {
     GetPage(
       name: _Paths.NEWS_VIEW,
       page: () => NewsView(),
+      binding: NewsViewBinding(),
+    ),
+    GetPage(
+      name: _Paths.NEWS_WEB,
+      page: () => NewsWebView(),
       binding: NewsViewBinding(),
     ),
   ];

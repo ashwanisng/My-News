@@ -1,5 +1,3 @@
-import 'package:flutter/cupertino.dart';
-
 class CountryName {
   var countryList = [
     {"name": "Afghanistan", "code": "AF"},

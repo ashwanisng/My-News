@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_overrides
+// ignore_for_file: unnecessary_overrides, avoid_print
 
 import 'dart:async';
 
@@ -12,16 +12,14 @@ class HomeController extends GetxController {
   //TODO: Implement HomeController
 
   TextEditingController searchController = TextEditingController();
+
   var newsList = <Article>[].obs;
-
   var isChecked = false.obs;
-
   var isLoading = false.obs;
-  var isError = false;
+  var isError = false.obs;
   var isInternetConnected = false.obs;
 
   final connectivity = Connectivity();
-
   late StreamSubscription<ConnectivityResult> subscription;
 
   @override
@@ -29,7 +27,6 @@ class HomeController extends GetxController {
     super.onInit();
     fetchNews();
     searchNews();
-
     getConnectionType();
     subscription =
         connectivity.onConnectivityChanged.listen(getConnectionStatus);
@@ -78,17 +75,20 @@ class HomeController extends GetxController {
     try {
       newsList.clear();
 
+      isLoading(true);
+
       FetchFromApi fetchFromApi = FetchFromApi();
       var data = await fetchFromApi.getNews();
 
       for (var i = 0; i < data!.articles.length; i++) {
         if (data.articles[i].urlToImage != null &&
             data.articles[i].source!.name!.isNotEmpty) {
+          print(data.articles[i].title);
           newsList.add(data.articles[i]);
         }
       }
-    } catch (e) {
-      print(e);
+    } finally {
+      isLoading(false);
     }
   }
 
@@ -106,9 +106,7 @@ class HomeController extends GetxController {
             newsList.add(data.articles[i]);
           }
         }
-      } else {
-        isError = true;
-      }
+      } else {}
     } catch (e) {
       print(e);
     }

@@ -87,7 +87,7 @@ class NewsSourceBottomSheet extends GetView<NewsSourceController> {
                   MaterialButton(
                     color: Env.colors.primaryBlue,
                     onPressed: () {
-                      controller.selectedCountryNews();
+                      controller.selectedNewsSourceNews();
                       Get.back();
                     },
                     child: const Text(

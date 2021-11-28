@@ -10,6 +10,7 @@ class NewsViewController extends GetxController {
   String? urlToImage;
   String? source;
   DateTime? publishedAt;
+  String? url;
 
   @override
   void onInit() {
@@ -22,6 +23,7 @@ class NewsViewController extends GetxController {
     urlToImage = data["urlToImage"];
     source = data["newsSource"];
     publishedAt = data["publishedAt"];
+    url = data['url'];
   }
 
   @override

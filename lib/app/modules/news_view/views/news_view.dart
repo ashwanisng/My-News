@@ -5,6 +5,7 @@ import 'package:news_app/app/core/env/env.dart';
 
 import 'package:news_app/app/modules/news_view/controllers/news_view_controller.dart';
 import 'package:news_app/app/modules/news_view/views/components/news_image.dart';
+import 'package:news_app/app/modules/newsweb/views/newsweb_view.dart';
 
 class NewsView extends GetView<NewsViewController> {
   @override
@@ -33,12 +34,23 @@ class NewsView extends GetView<NewsViewController> {
                 right: 14,
                 bottom: 4,
               ),
-              child: Text(
-                controller.source!,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 24,
-                ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    controller.source!,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24,
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.nightlight,
+                    ),
+                  )
+                ],
               ),
             ),
             const SizedBox(height: 5),
@@ -67,9 +79,12 @@ class NewsView extends GetView<NewsViewController> {
             ),
             const SizedBox(height: 20),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Get.to(() => NewsWebView(), arguments: controller.url);
+              },
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
                 child: Row(
                   children: [
                     Text(

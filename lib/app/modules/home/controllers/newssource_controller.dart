@@ -20,7 +20,7 @@ class NewsSourceController extends GetxController {
     false,
   ].obs;
 
-  void selectedCountryNews() async {
+  void selectedNewsSourceNews() async {
     try {
       homeController.newsList.clear();
 
@@ -49,6 +49,6 @@ class NewsSourceController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    selectedCountryNews();
+    selectedNewsSourceNews();
   }
 }
