@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 
 class FetchFromApi {
   final url =
-      'https://newsapi.org/v2/top-headlines?country=in&apiKey=f9fd98aa780c41298b2c77f27e2e718c';
+      'https://newsapi.org/v2/top-headlines?country=in&apiKey=d8e1938600e940e69b3ad0f789670232';
 
   // Fetch All latest News
 
@@ -22,7 +22,7 @@ class FetchFromApi {
 
   Future<News?> fetchCountryNews(String country) async {
     var _url =
-        "https://newsapi.org/v2/top-headlines?country=$country&apiKey=f9fd98aa780c41298b2c77f27e2e718c";
+        "https://newsapi.org/v2/top-headlines?country=$country&apiKey=d8e1938600e940e69b3ad0f789670232";
     var response = await http.get(Uri.parse(_url));
 
     if (response.statusCode == 200) {
@@ -37,7 +37,7 @@ class FetchFromApi {
 
   Future<News?> fetchFromSelectedNewsSource(String newsSourceId) async {
     var _url =
-        "https://newsapi.org/v2/top-headlines?sources=$newsSourceId&apiKey=f9fd98aa780c41298b2c77f27e2e718c";
+        "https://newsapi.org/v2/top-headlines?sources=$newsSourceId&apiKey=d8e1938600e940e69b3ad0f789670232";
     var response = await http.get(Uri.parse(_url));
 
     if (response.statusCode == 200) {
@@ -52,7 +52,7 @@ class FetchFromApi {
 
   Future<News?> searchNews(String searchQuery) async {
     var _url =
-        "https://newsapi.org/v2/everything?q=$searchQuery&apiKey=f9fd98aa780c41298b2c77f27e2e718c";
+        "https://newsapi.org/v2/everything?q=$searchQuery&apiKey=d8e1938600e940e69b3ad0f789670232";
     var response = await http.get(Uri.parse(_url));
 
     if (response.statusCode == 200) {
@@ -65,9 +65,10 @@ class FetchFromApi {
 
   // Fetch News by Selected Category
 
-  Future<News?> categoryWiseNews(String searchQuery) async {
+  Future<News?> categoryWiseNews(String? category) async {
     var _url =
-        "https://newsapi.org/v2/everything?q=$searchQuery&apiKey=f9fd98aa780c41298b2c77f27e2e718c";
+        "https://newsapi.org/v2/top-headlines/sources?category=$category&apiKey=d8e1938600e940e69b3ad0f789670232";
+
     var response = await http.get(Uri.parse(_url));
 
     if (response.statusCode == 200) {

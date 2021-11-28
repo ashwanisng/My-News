@@ -25,54 +25,58 @@ class NewsView extends GetView<NewsViewController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Stack(
-              children: [
-                NewsImage(
-                  url: controller.urlToImage,
-                ),
-                Positioned(
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.4),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        controller.title!,
-                        // textAlign: TextAlign.left,
-                        style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
+            Container(
+              height: MediaQuery.of(context).size.height * 0.3,
+              width: MediaQuery.of(context).size.width,
+              child: Stack(
+                children: [
+                  NewsImage(
+                    url: controller.urlToImage,
+                  ),
+                  Positioned(
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.4),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          controller.title!,
+                          // textAlign: TextAlign.left,
+                          style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                Positioned(
-                    right: 0,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(50),
-                      child: Container(
-                        color: Colors.white.withOpacity(0.4),
-                        child: IconButton(
-                          icon: const Icon(
-                            Icons.share,
-                            color: Colors.black,
+                  Positioned(
+                      right: 0,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(50),
+                        child: Container(
+                          color: Colors.white.withOpacity(0.4),
+                          child: IconButton(
+                            icon: const Icon(
+                              Icons.share,
+                              color: Colors.black,
+                            ),
+                            onPressed: () {
+                              controller.shareFun(
+                                controller.url,
+                                controller.title!,
+                              );
+                            },
                           ),
-                          onPressed: () {
-                            controller.shareFun(
-                              controller.url,
-                              controller.title!,
-                            );
-                          },
                         ),
-                      ),
-                    ))
-              ],
+                      ))
+                ],
+              ),
             ),
             const SizedBox(height: 10),
             Padding(
@@ -126,13 +130,9 @@ class NewsView extends GetView<NewsViewController> {
               padding: const EdgeInsets.symmetric(
                 horizontal: 14,
               ),
-              child: Flexible(
-                child: RichText(
-                  text: TextSpan(
-                    text: controller.description!,
-                    style: Theme.of(context).textTheme.bodyText1,
-                  ),
-                ),
+              child: Text(
+                controller.description!,
+                style: Theme.of(context).textTheme.bodyText1,
               ),
             ),
             const SizedBox(height: 20),

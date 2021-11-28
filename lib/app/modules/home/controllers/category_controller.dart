@@ -5,9 +5,13 @@ import 'package:news_app/app/data/service/api.dart';
 import 'package:news_app/app/modules/home/controllers/home_controller.dart';
 
 class CategoryController extends GetxController {
-  var selectedCategory = "".obs;
+  String selectedCategory = "general";
 
   HomeController homeController = Get.find<HomeController>();
+
+  void setSelected(String value) {
+    selectedCategory = value;
+  }
 
   // Show the list of categories
 
@@ -18,8 +22,7 @@ class CategoryController extends GetxController {
       homeController.isLoading(true);
 
       FetchFromApi fetchFromApi = FetchFromApi();
-      var data =
-          await fetchFromApi.categoryWiseNews(selectedCategory.toLowerCase());
+      var data = await fetchFromApi.categoryWiseNews(selectedCategory);
 
       for (var i = 0; i < data!.articles.length; i++) {
         if (data.articles[i].urlToImage != null &&
@@ -35,6 +38,16 @@ class CategoryController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+
+    print(selectedCategory);
     // showCategoryNews();
+  }
+
+  @override
+  void onReady() {
+    // TODO: implement onReady
+
+    // showCategoryNews();
+    super.onReady();
   }
 }

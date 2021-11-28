@@ -105,7 +105,7 @@ class HomeController extends GetxController {
       newsList.clear();
       isLoading(true);
 
-      isError(false);
+      // isError(false);
 
       FetchFromApi fetchFromApi = FetchFromApi();
       var data = await fetchFromApi.searchNews(searchController.text);
@@ -117,7 +117,8 @@ class HomeController extends GetxController {
             newsList.add(data.articles[i]);
           }
         }
-      } else {
+      } else if (data!.totalResults == 0) {
+        print(isError.value);
         isError(true);
       }
     } finally {

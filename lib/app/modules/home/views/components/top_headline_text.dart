@@ -21,28 +21,33 @@ class TopHeadLinesText extends GetView<CategoryController> {
           Row(
             children: [
               const Text("Sort: "),
-              Obx(
-                () => DropdownButton<String>(
-                  value: controller.selectedCategory.value.isNotEmpty
-                      ? controller.selectedCategory.value
-                      : null,
-                  key: UniqueKey(),
-                  icon: Icon(
-                    Icons.arrow_drop_down,
-                    color: Env.colors.primaryIndigo,
-                  ),
-                  items: <String>["popularity", "Newest", "Oldest"]
-                      .map((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
-                  onChanged: (dynamic newVal) {
-                    controller.selectedCategory.value = newVal;
-                  },
+              DropdownButton<String>(
+                value: controller.selectedCategory.isNotEmpty
+                    ? controller.selectedCategory
+                    : null,
+                key: UniqueKey(),
+                icon: Icon(
+                  Icons.arrow_drop_down,
+                  color: Env.colors.primaryIndigo,
                 ),
-              )
+                items: <String>[
+                  "business",
+                  "entertainment",
+                  "sports",
+                  "general",
+                  "technology",
+                ].map((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+                onChanged: (dynamic newVal) {
+                  // controller.selectedCategory.value = newVal;
+                  controller.setSelected(newVal);
+                  print(newVal);
+                },
+              ),
             ],
           )
         ],
