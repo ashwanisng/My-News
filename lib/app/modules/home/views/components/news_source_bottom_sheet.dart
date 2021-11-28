@@ -12,21 +12,17 @@ class NewsSourceBottomSheet extends GetView<NewsSourceController> {
   Widget build(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height * 0.5,
-      color: Env.colors.secondryWhite,
+      color: Theme.of(context).scaffoldBackgroundColor,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         child: Column(
           // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Padding(
+            Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
                 "Choose your location",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700,
-                ),
+                style: Theme.of(context).textTheme.bodyText2,
               ),
             ),
             Padding(
@@ -64,11 +60,11 @@ class NewsSourceBottomSheet extends GetView<NewsSourceController> {
                               icon: controller.isChecked[index]
                                   ? Icon(
                                       Icons.check_box,
-                                      color: Env.colors.primaryIndigo,
+                                      color: Theme.of(context).iconTheme.color,
                                     )
                                   : Icon(
                                       Icons.check_box_outline_blank,
-                                      color: Env.colors.primaryIndigo,
+                                      color: Theme.of(context).iconTheme.color,
                                     ),
                             ),
                           ),

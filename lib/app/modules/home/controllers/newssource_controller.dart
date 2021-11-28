@@ -24,6 +24,8 @@ class NewsSourceController extends GetxController {
     try {
       homeController.newsList.clear();
 
+      homeController.isLoading(true);
+
       FetchFromApi fetchFromApi = FetchFromApi();
 
       for (int i = 0; i < isChecked.length; i++) {
@@ -41,8 +43,8 @@ class NewsSourceController extends GetxController {
         }
         homeController.newsList.addAll(sourceNewsList);
       }
-    } catch (e) {
-      print(e);
+    } finally {
+      homeController.isLoading(false);
     }
   }
 

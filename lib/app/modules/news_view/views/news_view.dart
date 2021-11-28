@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:news_app/app/core/env/env.dart';
+import 'package:news_app/app/core/env/theme_service.dart';
 
 import 'package:news_app/app/modules/news_view/controllers/news_view_controller.dart';
 import 'package:news_app/app/modules/news_view/views/components/news_image.dart';
@@ -11,7 +12,7 @@ class NewsView extends GetView<NewsViewController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Env.colors.secondryWhite,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         backgroundColor: Env.colors.primaryBlue,
         leading: IconButton(
@@ -23,8 +24,54 @@ class NewsView extends GetView<NewsViewController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            NewsImage(
-              url: controller.urlToImage,
+            Stack(
+              children: [
+                NewsImage(
+                  url: controller.urlToImage,
+                ),
+                Positioned(
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.4),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        controller.title!,
+                        // textAlign: TextAlign.left,
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                    right: 0,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(50),
+                      child: Container(
+                        color: Colors.white.withOpacity(0.4),
+                        child: IconButton(
+                          icon: const Icon(
+                            Icons.share,
+                            color: Colors.black,
+                          ),
+                          onPressed: () {
+                            controller.shareFun(
+                              controller.url,
+                              controller.title!,
+                            );
+                          },
+                        ),
+                      ),
+                    ))
+              ],
             ),
             const SizedBox(height: 10),
             Padding(
@@ -45,10 +92,18 @@ class NewsView extends GetView<NewsViewController> {
                     ),
                   ),
                   IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.nightlight,
-                    ),
+                    onPressed: () {
+                      controller.changeTheme();
+                    },
+                    icon: !ThemeService().isSaveDarkMode()
+                        ? Icon(
+                            Icons.wb_sunny,
+                            color: Theme.of(context).colorScheme.primary,
+                          )
+                        : Icon(
+                            Icons.nightlight_round,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
                   )
                 ],
               ),
@@ -71,7 +126,7 @@ class NewsView extends GetView<NewsViewController> {
                 horizontal: 14,
               ),
               child: Text(
-                controller.description!,
+                controller.content!,
                 style: const TextStyle(
                   fontSize: 18,
                 ),

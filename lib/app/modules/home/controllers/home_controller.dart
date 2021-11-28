@@ -26,7 +26,7 @@ class HomeController extends GetxController {
   void onInit() {
     super.onInit();
     fetchNews();
-    searchNews();
+    // searchNews();
     getConnectionType();
     subscription =
         connectivity.onConnectivityChanged.listen(getConnectionStatus);
@@ -56,7 +56,7 @@ class HomeController extends GetxController {
   void selectedCountryNews(String code) async {
     try {
       newsList.clear();
-
+      isLoading(true);
       FetchFromApi fetchFromApi = FetchFromApi();
       var data = await fetchFromApi.fetchCountryNews(code);
 
@@ -66,8 +66,8 @@ class HomeController extends GetxController {
           newsList.add(data.articles[i]);
         }
       }
-    } catch (e) {
-      print(e);
+    } finally {
+      isLoading(false);
     }
   }
 
@@ -83,7 +83,6 @@ class HomeController extends GetxController {
       for (var i = 0; i < data!.articles.length; i++) {
         if (data.articles[i].urlToImage != null &&
             data.articles[i].source!.name!.isNotEmpty) {
-          print(data.articles[i].title);
           newsList.add(data.articles[i]);
         }
       }
@@ -95,6 +94,9 @@ class HomeController extends GetxController {
   void searchNews() async {
     try {
       newsList.clear();
+      isLoading(true);
+
+      isError(false);
 
       FetchFromApi fetchFromApi = FetchFromApi();
       var data = await fetchFromApi.searchNews(searchController.text);
@@ -106,9 +108,11 @@ class HomeController extends GetxController {
             newsList.add(data.articles[i]);
           }
         }
-      } else {}
-    } catch (e) {
-      print(e);
+      } else {
+        isError(true);
+      }
+    } finally {
+      isLoading(false);
     }
   }
 
