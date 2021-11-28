@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:news_app/app/core/env/env.dart';
 import 'package:news_app/app/core/env/theme_service.dart';
 
@@ -112,7 +113,7 @@ class NewsView extends GetView<NewsViewController> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 14),
               child: Text(
-                controller.publishedAt.toString(),
+                DateFormat.yMMMMEEEEd().format(controller.publishedAt!),
                 style: const TextStyle(
                   // fontWeight: FontWeight.bold,
                   fontSize: 14,

@@ -16,6 +16,7 @@ import 'package:news_app/app/modules/home/views/components/top_headline_text.dar
 import 'package:news_app/app/modules/news_view/views/news_view.dart';
 import 'package:news_app/app/utils/error_page.dart';
 import 'package:news_app/app/utils/no_internet.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class HomeView extends GetView<HomeController> {
   @override
@@ -57,8 +58,8 @@ class HomeView extends GetView<HomeController> {
                                             SizedBox(
                                               child: CountryListPick(
                                                 theme: CountryTheme(
-                                                  isShowFlag: false,
-                                                  isShowTitle: true,
+                                                  isShowFlag: true,
+                                                  isShowTitle: false,
                                                   isDownIcon: true,
                                                   showEnglishName: true,
                                                   isShowCode: false,
@@ -100,6 +101,9 @@ class HomeView extends GetView<HomeController> {
                                 delegate: SliverChildBuilderDelegate(
                                   (context, index) {
                                     var data = controller.newsList[index];
+
+                                    DateTime time = DateTime.parse(
+                                        data.publishedAt.toString());
                                     return GestureDetector(
                                       onTap: () {
                                         Get.to(() => NewsView(), arguments: {
@@ -113,14 +117,11 @@ class HomeView extends GetView<HomeController> {
                                         });
                                       },
                                       child: CardView(
-                                        newsSource: data.source!.name,
-                                        image: data.urlToImage ??
-                                            "https://cdn.pixabay.com/photo/2013/07/12/19/16/newspaper-154444_960_720.png",
-                                        title: data.title,
-                                        dateTime: DateFormat.jm()
-                                            .format(data.publishedAt!)
-                                            .toString(),
-                                      ),
+                                          newsSource: data.source!.name,
+                                          image: data.urlToImage ??
+                                              "https://cdn.pixabay.com/photo/2013/07/12/19/16/newspaper-154444_960_720.png",
+                                          title: data.title,
+                                          dateTime: timeago.format(time)),
                                     );
                                   },
                                   childCount: controller.newsList.length,
