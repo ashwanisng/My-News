@@ -4,10 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:news_app/app/core/env/env.dart';
 
 class SearchView extends StatelessWidget {
-  TextEditingController controller = TextEditingController();
+  TextEditingController controller;
+  Function()? onPressed;
+
+  SearchView({
+    required this.controller,
+    required this.onPressed,
+  });
+
   final formKey = GlobalKey();
 
-  SearchView({required this.controller});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,9 +34,9 @@ class SearchView extends StatelessWidget {
           filled: true,
           fillColor: Env.colors.secondryGrey,
           hintText: "Search for news, topics...",
-          suffixIcon: Icon(
-            Icons.search,
-            color: Colors.grey[600],
+          suffixIcon: IconButton(
+            onPressed: onPressed,
+            icon: Icon(Icons.search),
           ),
         ),
       ),

@@ -16,7 +16,7 @@ class FetchFromApi {
 
   fetchCountryNews(String country) async {
     var _url =
-        "https://newsapi.org/v2/top-headlines?country=${country.toLowerCase()}&apiKey=b9e7b0d3647148fa90b4e0beff0990bf";
+        "https://newsapi.org/v2/top-headlines?country=$country&apiKey=b9e7b0d3647148fa90b4e0beff0990bf";
     var response = await http.get(Uri.parse(_url));
 
     if (response.statusCode == 200) {
@@ -28,6 +28,17 @@ class FetchFromApi {
   fetchFromSelectedNewsSource(String newsSourceId) async {
     var _url =
         "https://newsapi.org/v2/top-headlines?sources=$newsSourceId&apiKey=b9e7b0d3647148fa90b4e0beff0990bf";
+    var response = await http.get(Uri.parse(_url));
+
+    if (response.statusCode == 200) {
+      var jsonString = response.body;
+      return newsFromJson(jsonString);
+    }
+  }
+
+  searchNews(String searchQuery) async {
+    var _url =
+        "https://newsapi.org/v2/everything?q=$searchQuery&apiKey=b9e7b0d3647148fa90b4e0beff0990bf";
     var response = await http.get(Uri.parse(_url));
 
     if (response.statusCode == 200) {
