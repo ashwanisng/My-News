@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:news_app/app/modules/home/controllers/category_controller.dart';
 
 import 'package:news_app/app/modules/home/controllers/home_controller.dart';
 import 'package:news_app/app/modules/home/controllers/newssource_controller.dart';
@@ -22,6 +23,10 @@ class HomeBinding extends Bindings {
     );
     Get.lazyPut<NewsWebController>(
       () => NewsWebController(),
+      fenix: true,
+    );
+    Get.lazyPut<CategoryController>(
+      () => CategoryController(),
       fenix: true,
     );
   }

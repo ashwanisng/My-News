@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:news_app/app/core/env/env.dart';
+import 'package:news_app/app/modules/home/controllers/category_controller.dart';
+import 'package:news_app/app/modules/home/controllers/home_controller.dart';
 
-class TopHeadLinesText extends StatelessWidget {
-  const TopHeadLinesText({
-    Key? key,
-  }) : super(key: key);
-
+class TopHeadLinesText extends GetView<CategoryController> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,21 +20,29 @@ class TopHeadLinesText extends StatelessWidget {
             ),
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            // mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               const Text("Sort: "),
-              const Text(
-                "Newest",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.arrow_drop_down,
-                  size: 30,
+              Obx(
+                () => DropdownButton<String>(
+                  value: controller.selectedCategory.value.isNotEmpty
+                      ? controller.selectedCategory.value
+                      : null,
+                  key: UniqueKey(),
+                  icon: Icon(
+                    Icons.arrow_drop_down,
+                    color: Env.colors.primaryIndigo,
+                  ),
+                  items: <String>["Popular", "Newest", "Oldest"]
+                      .map((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  onChanged: (dynamic newVal) {
+                    controller.selectedCategory.value = newVal;
+                  },
                 ),
               )
             ],

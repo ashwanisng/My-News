@@ -93,7 +93,7 @@ class HomeView extends GetView<HomeController> {
                                 ),
                               ),
                             ),
-                            const SliverToBoxAdapter(
+                            SliverToBoxAdapter(
                               child: TopHeadLinesText(),
                             ),
                             Obx(
