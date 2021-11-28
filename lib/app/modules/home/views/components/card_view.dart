@@ -5,11 +5,13 @@ class CardView extends StatelessWidget {
   String? newsSource;
   String? image;
   String? title;
+  String? dateTime;
 
   CardView({
     required this.newsSource,
     required this.image,
     required this.title,
+    required this.dateTime,
   });
   @override
   Widget build(BuildContext context) {
@@ -30,8 +32,7 @@ class CardView extends StatelessWidget {
                     Flexible(
                       child: Text(
                         newsSource!,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.w700, fontSize: 18),
+                        style: Theme.of(context).textTheme.bodyText2,
                       ),
                     ),
                     // SizedBox(height: 8),
@@ -41,8 +42,15 @@ class CardView extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         maxLines: 5,
                         softWrap: false,
+                        style: Theme.of(context).textTheme.bodyText1,
                       ),
                     ),
+                    Container(
+                      child: Text(
+                        dateTime.toString(),
+                        style: Theme.of(context).textTheme.caption,
+                      ),
+                    )
                   ],
                 ),
               ),
@@ -62,7 +70,7 @@ class CardView extends StatelessWidget {
                     // width: 100,
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),

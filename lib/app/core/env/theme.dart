@@ -70,7 +70,7 @@ class YourTheme {
       fontFamily: 'Roboto',
       fontWeight: FontWeight.w400,
       color: Colors.black,
-      fontSize: 14.0,
+      fontSize: 16.0,
     ),
     bodyText2: TextStyle(
       fontFamily: 'Roboto',
@@ -86,8 +86,8 @@ class YourTheme {
     caption: TextStyle(
       fontFamily: 'Roboto',
       fontWeight: FontWeight.w400,
-      color: Color(0xFF2128BD),
-      fontSize: 18.0,
+      color: Colors.grey,
+      fontSize: 14.0,
     ),
   );
 
@@ -108,7 +108,7 @@ class YourTheme {
       color: Color(0xFF2128BD),
     ),
     bodyText1: TextStyle(
-      fontSize: 14,
+      fontSize: 16,
       fontFamily: 'Roboto',
       color: Colors.white,
     ),
@@ -125,9 +125,9 @@ class YourTheme {
     ),
     caption: TextStyle(
       fontWeight: FontWeight.w400,
-      color: Color(0xFF2128BD),
+      color: Colors.white,
       fontFamily: 'Roboto',
-      fontSize: 18.0,
+      fontSize: 14.0,
     ),
   );
 }

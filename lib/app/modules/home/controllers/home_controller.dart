@@ -71,7 +71,7 @@ class HomeController extends GetxController {
     }
   }
 
-  void fetchNews() async {
+  fetchNews() async {
     try {
       newsList.clear();
 
